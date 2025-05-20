@@ -10,7 +10,7 @@ public class DealershipFileManager {
         Dealership dealership = null;
         ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("dealership.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("inventory.csv"))) {
             String line;
             int lineNumber = 0;
             while ((line = br.readLine()) != null) {
