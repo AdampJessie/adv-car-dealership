@@ -2,17 +2,19 @@ package com.pluralsight.Contracts;
 
 import com.pluralsight.dealership.Vehicle;
 
-public class SalesContract extends Contract{
+public class SalesContract extends Contract {
 
-    private double salesTaxAmount, recordingFee = 100.00, processingFee;
+    private double salesTaxAmount, recordingFee, processingFee;
     private boolean financed;
     private double monthlyPayment;
 
-    public SalesContract(String date, String name, String email, Vehicle vehicleSold, double salesTaxAmount, double recordingFee, double processingFee, boolean financed) {
+    public SalesContract(String date, String name, String email, Vehicle vehicleSold, boolean financed) {
         super(date, name, email, vehicleSold);
-        this.salesTaxAmount = salesTaxAmount;
-        this.recordingFee = recordingFee;
-        this.processingFee = processingFee;
+        this.salesTaxAmount = vehicleSold.getPrice() * 0.05;
+        this.recordingFee = 100;
+        if (vehicleSold.getPrice() < 10000)
+            this.processingFee = 295;
+        else this.processingFee = 495;
         this.financed = financed;
     }
 
@@ -50,11 +52,29 @@ public class SalesContract extends Contract{
 
     @Override
     public double getTotalPrice() {
-        return 0;
+        return getVehicleSold().getPrice() + salesTaxAmount + recordingFee + processingFee;
     }
 
     @Override
     public double getMonthlyPayment() {
-        return 0;
+
+        if (!financed)
+            return 0;
+
+        double rate;
+        int months;
+        double vehiclePrice = getVehicleSold().getPrice();
+
+        if (vehiclePrice >= 10000) {
+            rate = .0425;
+            months = 48;
+        } else {
+            rate = .0525;
+            months = 24;
+        }
+        double monthlyRate = rate / 12; // Assuming rate is APR
+
+        return (vehiclePrice * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+
     }
 }
