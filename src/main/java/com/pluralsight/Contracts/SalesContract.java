@@ -74,7 +74,16 @@ public class SalesContract extends Contract {
         }
         double monthlyRate = rate / 12; // Assuming rate is APR
 
-        return (vehiclePrice * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+        return Math.round((vehiclePrice * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months)));
 
+    }
+
+    @Override
+    public String toString() {
+        Vehicle carSold = this.getVehicleSold();
+        return String.format("\n%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%.2f|%.2f|%.2f|%.2f|%.2f|%s|%.2f",
+                "SALE", this.getDate(), this.getName(), this.getEmail(), carSold.getVin(), carSold.getYear(), carSold.getMake(),
+                carSold.getModel(), carSold.getVehicleType(), carSold.getColor(), carSold.getOdometer(), carSold.getPrice(), this.getSalesTaxAmount(),
+                this.getRecordingFee(), this.getProcessingFee(), this.getTotalPrice(), this.financed, this.getMonthlyPayment());
     }
 }
