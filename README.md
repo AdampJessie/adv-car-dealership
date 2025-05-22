@@ -1,10 +1,11 @@
 # Car Dealership
 
 ## Description of the Project
-This is a virtual car dealership, fully outfitted with an inventory of vehicles to search and choose from. The program
+This is an advanced virtual car dealership, fully outfitted with an inventory of vehicles to search and choose from. The program
 reads from a file, populates the dealership, allows for modification, and then saves any changes to the dealership when
 the user exits the program. Currently, searching allows users to input year, price, mileage, make/model, color, or vehicle 
-type to search for their dream car.
+type to search for their dream car. When a user finds the car of their dreams, they can then write a contract to purchase that vehicle
+outright or with a lease.
 
 
 ## User Stories
@@ -12,6 +13,9 @@ type to search for their dream car.
 - As an owner, I'd like read input from a file so that I may upload raw information to be swiftly organized and easily modifiable.
 - As a customer, I'd like an intuitive menu so that I may select from a range of options and reduce the hassle of searching for and buying a car.
 - As a customer, I'd like the ability to search for specific vehicles so that I may find the exact car that I'd like from a selection.
+- As a customer, I'd like to purchase a vehicle so that I can do more than look at the inventory!
+- As an owner, I'd like to save written contracts so that I have may retain and organize my Dealership business.
+- As an owner, I'd like to remove purchased vehicles from inventory so that any confusion regarding inventory is eased.
 
 ## Setup
 
@@ -37,12 +41,14 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-![Full Demonstration](DEMO.gif)
+![Full Demonstration](gif-demo.gif)
+![Contracts](contracts.png)
 
 ## Future Work
 
 - Improvement of error handling, improvement of performance.
 - More dealerships!
+- Admin login/functions (View contracts, add/remove vehicle)
 
 ## Resources
 
